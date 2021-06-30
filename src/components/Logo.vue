@@ -19,7 +19,7 @@ export default {
 .header {
   display: flex;
   align-items: center;
-  margin:10px auto;
+  margin:30px 0px 0px 30px;
 }
 .header-btn{
   width: 60px;

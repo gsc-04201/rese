@@ -1,34 +1,39 @@
 <template>
- <div>
-  <HeaderAuth />
-  <div class="container">
-    <div class="background-blue">
-      <p>Registration</p>
+  <div>
+    <div class="header flex">
+      <Logo />
+      <HeaderAuth />
     </div>
-    <div class="card">
-      <div class="form">
-        <div class="flex icon-field">
-          <i class="fas fa-user"></i>
-          <input placeholder="Username" type="text" v-model="name"/>
+    
+    <div class="container">
+      <div class="background-blue">
+        <p>Registration</p>
+      </div>
+      <div class="card">
+        <div class="form">
+          <div class="flex icon-field">
+            <i class="fas fa-user"></i>
+            <input placeholder="Username" type="text" v-model="name"/>
+          </div>
+          <div class="flex icon-field">
+            <i class="fas fa-envelope"></i>
+            <input placeholder="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" v-model="email"/>
+          </div>
+          <div class="flex icon-field">
+            <i class="fas fa-lock"></i>
+            <input placeholder="Password" type="password" pattern="^[0-9A-Za-z]+$	" v-model="password"/>
+            <input placeholder="再確認用" type="password" v-model="repassword"/>
+          </div>
+          <button @click="auth">新規登録</button>
         </div>
-        <div class="flex icon-field">
-          <i class="fas fa-envelope"></i>
-          <input placeholder="Email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" v-model="email"/>
-        </div>
-        <div class="flex icon-field">
-          <i class="fas fa-lock"></i>
-          <input placeholder="Password" type="password" pattern="^[0-9A-Za-z]+$	" v-model="password"/>
-          <input placeholder="再確認用" type="password" v-model="repassword"/>
-        </div>
-        <button @click="auth">新規登録</button>
       </div>
     </div>
   </div>
- </div>
 </template>
 
 <script>
 import HeaderAuth from "../components/HeaderAuth";
+import Logo from "../components/Logo";
 import axios from "axios";
 export default {
   data() {
@@ -40,7 +45,8 @@ export default {
     };
   },
   components: {
-   HeaderAuth
+   HeaderAuth,
+   Logo
   },
   methods: {
     auth() {
@@ -71,6 +77,9 @@ export default {
 </script>
 
 <style scoped>
+.header {
+  justify-content: space-between;
+}
 button {
  width: 100px;
  padding: 8px 0 10px;

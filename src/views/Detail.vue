@@ -1,8 +1,9 @@
 <template>
   <div class="Detail">
+    <Logo/>
     <div class="container flex">
       <div class="store-detail">
-        <Logo/>
+        <!-- <Logo/> -->
         <div class="title flex">
           <p class="btn-flat-simple" @click="$router.push('/home')">
             <i class="fa fa-caret-left"></i>
@@ -196,10 +197,6 @@ export default {
 .Detail {
   width: 90%;
   margin: 70px auto;
-  /* background-color: #fff; */
-}
-.flex {
-  display: flex;
 }
 /* left側 */
 .store-detail {
@@ -237,7 +234,6 @@ export default {
   padding:40px;
 }
 .reservation-title {
-  /* background-color: #ccc; */
   padding:15px 0;
   font-size: 20px;
   text-align: center;
@@ -369,6 +365,7 @@ input {
   background-color: green;
   border-radius: 5px;
   color:#fff;
+  cursor: pointer;
 }
 .btn2 {
   width:150px;
@@ -376,6 +373,7 @@ input {
   background-color: blue;
   border-radius: 5px;
   color:#fff;
+  cursor: pointer;
 }
 
 </style>

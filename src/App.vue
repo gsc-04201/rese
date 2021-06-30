@@ -103,7 +103,8 @@ input, select {
 html {
   /* background-color: #15202b; */
   background-color: #f3f3f3;
-  /* background-color: skyblue; */
+  background: url(./assets/wood-texture_00001.jpg);
+  /* background: url(./assets/wood-texture_00124.jpeg); */
 }
 * {
   /* color: white; */

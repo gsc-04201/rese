@@ -1,6 +1,15 @@
 <template>
   <div id="mypage">
     <Logo/>
+    <div class="flex">
+          <p class="btn-flat-simple" @click="$router.push('/home')">
+            <i class="fa fa-caret-left"></i>
+          </p>
+          <div class="user-name">{{this.$store.state.user.name}}<span>さん</span></div>
+
+          <!-- <h2>{{this.stores.name}}</h2> -->
+        </div>
+    <!-- <div class="user-name">{{this.$store.state.user.name}}<span>さん</span></div> -->
     <div class="mypage flex">
       <div class="left">
         <h2>予約状況</h2>
@@ -45,19 +54,20 @@
             <img :src="list.store.img" alt="">
             <h3 class="name text">{{list.store.name}}</h3>
             <p class="text">#{{list.store.area.name}}#{{list.store.genre.name}}</p>
+
+            <StarRating :star-size="20" @rating-selected ="setRating">
+              <!-- <template v-slot:screen-reader="slotProps">
+                  This product has been rated {{slotProps.rating}} out of {{slotProps.stars}} stars
+              </template> -->
+            </StarRating>
+
             <div class="box flex">
-              <!-- <button class="detail" @click="transitionDetail(index)">詳しくみる</button> -->
-              <!-- <div class="btn" @click="transitionDetail(index)">
+              <div class="btn" @click="transitionDetail(index)">
                 <div class="btn-inner">
                   <p>詳しくみる</p>
                 </div>
-              </div> -->
-                <div class="btn-inner1" @click="transitionDetail(index)">
-                  <p>詳しくみる<span><i class="fas fa-arrow-right"></i></span></p>
-                </div>
-
+              </div>
               <div class="fas fa-heart red" @click="deleteFav(index)"></div>
-
             </div>
           </div>
         </div>
@@ -72,20 +82,28 @@
 <script>
 import axios from "axios";
 import Logo from "../components/Logo";
+import StarRating from 'vue-star-rating';
 const url = 'https://hidden-hamlet-97241.herokuapp.com/api/';
 
 export default {
   components: {
-    Logo
+    Logo,
+    StarRating
   },
   data() {
     return {
       user_id: this.$store.state.user.id,
       reservations:[],
       likedData:[],
+      rating:0
     }
   },
   methods: {
+    setRating(rating) {
+      this.rating= rating;
+      console.log(rating);
+    },
+
     deleteReservation(ind) {
       axios.delete(url + 'reservation/' + this.user_id, {
         data: {store_id: this.reservations[ind].store_id}
@@ -149,6 +167,36 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
+.user-name {
+  width: 150px;
+  font-size: 24px;
+  margin: 0 30%;
+  text-align: center;
+   border-bottom: dashed 2px #6594e0;
+}
+.user-name span {
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+/* バックボタン */
+.fa {
+  font-size: 32px;
+  margin-left: 5px;
+}
+.btn-flat-simple {
+  padding: 3px 15px 3px 5px;
+  color: #00BCD4;
+  background: #ececec;
+  margin-left: 10px;
+  border-radius: 5px;
+  box-shadow: slategray;
+}
+.btn-flat-simple:hover {
+  background: #00bcd4;
+  color: white;
+}
+
 
 /* reservation */
 .reservation-card {
@@ -203,7 +251,7 @@ export default {
   align-items: center;
   margin-top: 5px;
 }
-/* .btn{
+.btn{
   background: blue;
   border: 1px solid #fff;
   border-radius: 5px;
@@ -228,7 +276,7 @@ export default {
   color: red;
   background-color: #fff;
   cursor: pointer;
-} */
+}
 .red{
   font-size: 20px;
   cursor:pointer;
@@ -239,25 +287,5 @@ export default {
 .red:hover {
   font-size: 24px;
 }
-/* btn */
-.btn-inner1 {
-  border: 2px solid #000;
-  border-radius: 30px;
-  padding: 5px;
-  width:80px;
-  text-align: center;
-  cursor: pointer;
-}
-.btn-inner1 p {
-  font-size: 8px;
-}
-.fas {
-  margin-left: 5px;
-}
-.btn-inner1:hover {
-  background: #000;
-  color: #fff;
-}
-
 
 </style>

@@ -94,6 +94,12 @@ export default {
             storeArray.push(store);
           }
           if (this.selectedArea === 0 || this.selectedGenre === 0) {
+            if (store.area.name.indexOf(this.selectedArea) !== -1 ||
+            store.genre.name.indexOf(this.selectedGenre) !== -1) {
+              storeArray.push(store);
+            }
+          }
+          if (this.selectedArea === 0 && this.selectedGenre === 0) {
             storeArray.push(store);
           }
         }
@@ -159,6 +165,7 @@ export default {
 </script>
 
 <style scoped>
+/* mypage */
 .mypage {
   margin:auto;
   align-items: center;
@@ -166,7 +173,8 @@ export default {
 .fa-user {
   font-size: 28px;
   margin: auto;
-  align-items:flex-end
+  align-items:flex-end;
+  cursor: pointer;
 }
 .fa-user p {
   font-size: 14px;

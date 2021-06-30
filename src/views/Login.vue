@@ -1,30 +1,34 @@
 <template>
- <div>
-  <HeaderAuth />
-  <div class="container">
-    <div class="background-blue">
-      <p>Login</p>
+  <div>
+    <div class="header flex">
+      <Logo />
+      <HeaderAuth />
     </div>
-    <div class="card">
-      <div class="form">
-        <div class="flex icon-field">
-          <i class="fas fa-envelope"></i>
-          <input placeholder="Email" type="email" v-model="email"/>
-        </div>
-        <div class="flex icon-field">
-          <i class="fas fa-lock"></i>
-          <input placeholder="Password" type="password" v-model="password"/>
-        </div>
-        <button @click="auth">ログイン</button>
+    <div class="container">
+      <div class="background-blue">
+        <p>Login</p>
+      </div>
+      <div class="card">
+        <div class="form">
+          <div class="flex icon-field">
+            <i class="fas fa-envelope"></i>
+            <input placeholder="Email" type="email" v-model="email"/>
+          </div>
+          <div class="flex icon-field">
+            <i class="fas fa-lock"></i>
+            <input placeholder="Password" type="password" v-model="password"/>
+          </div>
+          <button @click="auth">ログイン</button>
 
+        </div>
       </div>
     </div>
   </div>
- </div>
 </template>
 
 <script>
 import HeaderAuth from "../components/HeaderAuth";
+import Logo from "../components/Logo";
 export default {
   data() {
     return {
@@ -33,7 +37,8 @@ export default {
     };
   },
   components: {
-    HeaderAuth
+    HeaderAuth,
+    Logo
   },
   methods: {
     auth() {
@@ -50,6 +55,9 @@ export default {
 </script>
 
 <style scoped>
+.header {
+  justify-content: space-between;
+}
 button {
  width: 100px;
  padding: 8px 0 10px;

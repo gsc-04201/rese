@@ -1,28 +1,35 @@
 <template>
- <div>
-  <HeaderAuth />
-  <div class="container">
-    <div class="card">
-      <p class="thanks-text">
-        会員登録ありがとうございます
-      </p>
-
-      <button @click="$router.push('/')">ログインする</button>
+  <div>
+    <div class="header flex">
+      <Logo />
+      <HeaderAuth />
+    </div>
+    <div class="container">
+      <div class="card">
+        <p class="thanks-text">
+          会員登録ありがとうございます
+        </p>
+        <button @click="$router.push('/')">ログインする</button>
+      </div>
     </div>
   </div>
- </div>
 </template>
 
 <script>
 import HeaderAuth from "../components/HeaderAuth";
+import Logo from "../components/Logo";
 export default {
  components: {
-   HeaderAuth
+   HeaderAuth,
+   Logo
  }
 };
 </script>
 
 <style scoped>
+.header {
+  justify-content: space-between;
+}
 button {
  width: 150px;
  padding: 5px 0px;

@@ -1,6 +1,6 @@
 <template>
  <div>
-  <!-- <Logo/> -->
+  <Logo/>
   <div class="container">
     <div class="card">
       <p class="thanks-text">
@@ -14,10 +14,10 @@
 </template>
 
 <script>
-// import Logo from "../components/Logo";
+import Logo from "../components/Logo";
 export default {
  components: {
-  //  Logo
+   Logo
  }
 };
 </script>
