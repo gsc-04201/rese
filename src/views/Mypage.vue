@@ -7,9 +7,7 @@
           </p>
           <div class="user-name">{{this.$store.state.user.name}}<span>さん</span></div>
 
-          <!-- <h2>{{this.stores.name}}</h2> -->
         </div>
-    <!-- <div class="user-name">{{this.$store.state.user.name}}<span>さん</span></div> -->
     <div class="mypage flex">
       <div class="left">
         <h2>予約状況</h2>

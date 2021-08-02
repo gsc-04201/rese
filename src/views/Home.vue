@@ -159,7 +159,6 @@ export default {
     .then((res) => this.genres = res.data.data);
     axios.get(url + 'like/' + this.user_id)
     .then((res) => this.likedData = res.data.data);
-    // .then((res) => console.log(res.data.data));
   },
 };
 </script>
